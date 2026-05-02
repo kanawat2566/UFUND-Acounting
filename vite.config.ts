@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ufund-acounting/',
+  base: '/UFUND-Acounting/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
