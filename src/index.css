@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-family: 'Sarabun', 'Noto Sans Thai', sans-serif;
+  }
+
+  body {
+    @apply text-gray-900 bg-gray-100;
+  }
+}
+
+@layer utilities {
+  .font-thai {
+    font-family: 'Sarabun', 'Noto Sans Thai', sans-serif;
+  }
+
+  /* ตัวเลขแบบ tabular สำหรับตัวเลขบัญชี */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+  @page {
+    size: A4;
+    margin: 1.5cm 2cm;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 10pt !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* ป้องกันการตัดตาราง */
+  table {
+    page-break-inside: avoid;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* ทำให้ header ซ้ำทุกหน้า */
+  thead {
+    display: table-header-group;
+  }
+
+  tfoot {
+    display: table-footer-group;
+  }
+
+  /* สี border ในโหมดพิมพ์ */
+  .border-gray-900 {
+    border-color: #000 !important;
+  }
+}
