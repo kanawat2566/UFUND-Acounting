@@ -65,7 +65,7 @@ function SectionTitle({ title, className = '' }: { title: string; className?: st
 
 export function BalanceSheet({ data }: BalanceSheetProps) {
   const printRef = useRef<HTMLDivElement>(null)
-  const handlePrint = useReactToPrint({ contentRef: printRef })
+  const handlePrint = useReactToPrint({ content: () => printRef.current })
   const asOf = formatThaiDateFull(data.date)
 
   return (

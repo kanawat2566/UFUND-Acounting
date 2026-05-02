@@ -197,7 +197,7 @@ function DiffTable() {
 // ───────────────────────────────────────────
 export function LeasingJournal() {
   const printRef = useRef<HTMLDivElement>(null)
-  const handlePrint = useReactToPrint({ contentRef: printRef })
+  const handlePrint = useReactToPrint({ content: () => printRef.current })
   const [activeVendor, setActiveVendor] = useState<'both' | 'other' | 'com7'>('both')
 
   return (

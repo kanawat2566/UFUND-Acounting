@@ -57,7 +57,7 @@ interface GeneralLedgerProps {
 
 export function GeneralLedger({ entries = SAMPLE_JOURNAL_ENTRIES, periodLabel }: GeneralLedgerProps) {
   const printRef = useRef<HTMLDivElement>(null)
-  const handlePrint = useReactToPrint({ contentRef: printRef })
+  const handlePrint = useReactToPrint({ content: () => printRef.current })
 
   const ledgerAccounts = buildLedgerAccounts(entries)
 
