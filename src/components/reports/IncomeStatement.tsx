@@ -75,7 +75,7 @@ function SectionDivider({ title }: { title: string }) {
 
 export function IncomeStatement({ data }: IncomeStatementProps) {
   const printRef = useRef<HTMLDivElement>(null)
-  const handlePrint = useReactToPrint({ contentRef: printRef })
+  const handlePrint = useReactToPrint({ content: () => printRef.current })
 
   return (
     <div className="space-y-4">

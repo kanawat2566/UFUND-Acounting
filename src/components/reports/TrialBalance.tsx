@@ -42,7 +42,7 @@ export function buildTrialBalanceRows(
 
 export function TrialBalance({ rows, asOfLabel }: TrialBalanceProps) {
   const printRef = useRef<HTMLDivElement>(null)
-  const handlePrint = useReactToPrint({ contentRef: printRef })
+  const handlePrint = useReactToPrint({ content: () => printRef.current })
 
   const totalDebit = rows.reduce((s, r) => s + r.debitBalance, 0)
   const totalCredit = rows.reduce((s, r) => s + r.creditBalance, 0)

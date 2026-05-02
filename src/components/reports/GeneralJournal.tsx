@@ -13,7 +13,7 @@ interface GeneralJournalProps {
 
 export function GeneralJournal({ entries, periodLabel }: GeneralJournalProps) {
   const printRef = useRef<HTMLDivElement>(null)
-  const handlePrint = useReactToPrint({ contentRef: printRef })
+  const handlePrint = useReactToPrint({ content: () => printRef.current })
 
   const totalDebit = entries.flatMap(e => e.lines).reduce((s, l) => s + l.debit, 0)
   const totalCredit = entries.flatMap(e => e.lines).reduce((s, l) => s + l.credit, 0)
