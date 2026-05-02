@@ -4,6 +4,7 @@ import { GeneralLedger } from '@/components/reports/GeneralLedger'
 import { TrialBalance, buildTrialBalanceRows } from '@/components/reports/TrialBalance'
 import { IncomeStatement } from '@/components/reports/IncomeStatement'
 import { BalanceSheet } from '@/components/reports/BalanceSheet'
+import { LeasingJournal } from '@/components/reports/LeasingJournal'
 import {
   COMPANY,
   SAMPLE_JOURNAL_ENTRIES,
@@ -12,7 +13,7 @@ import {
 } from '@/data/sampleData'
 import { formatThaiPeriod, formatThaiDateFull } from '@/utils/thaiFormatter'
 
-type ReportKey = 'journal' | 'ledger' | 'trial' | 'income' | 'balance'
+type ReportKey = 'journal' | 'ledger' | 'trial' | 'income' | 'balance' | 'leasing'
 
 interface NavItem {
   key: ReportKey
@@ -22,11 +23,12 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { key: 'journal',  labelThai: 'สมุดรายวัน',       labelEng: 'General Journal',    icon: '📋' },
-  { key: 'ledger',   labelThai: 'บัญชีแยกประเภท',   labelEng: 'General Ledger',     icon: '📒' },
-  { key: 'trial',    labelThai: 'งบทดลอง',           labelEng: 'Trial Balance',       icon: '⚖️' },
-  { key: 'income',   labelThai: 'งบกำไรขาดทุน',     labelEng: 'Income Statement',   icon: '📈' },
-  { key: 'balance',  labelThai: 'งบดุล',             labelEng: 'Balance Sheet',       icon: '🏦' },
+  { key: 'journal',  labelThai: 'สมุดรายวัน',         labelEng: 'General Journal',    icon: '📋' },
+  { key: 'ledger',   labelThai: 'บัญชีแยกประเภท',     labelEng: 'General Ledger',     icon: '📒' },
+  { key: 'trial',    labelThai: 'งบทดลอง',             labelEng: 'Trial Balance',       icon: '⚖️' },
+  { key: 'income',   labelThai: 'งบกำไรขาดทุน',       labelEng: 'Income Statement',   icon: '📈' },
+  { key: 'balance',  labelThai: 'งบดุล',               labelEng: 'Balance Sheet',       icon: '🏦' },
+  { key: 'leasing',  labelThai: 'Leasing (เช่าซื้อ)', labelEng: 'Financial Lease',    icon: '🔑' },
 ]
 
 const PERIOD_FROM = new Date(2025, 0, 1)
@@ -124,6 +126,9 @@ export default function App() {
             )}
             {active === 'balance' && (
               <BalanceSheet data={SAMPLE_BALANCE_SHEET} />
+            )}
+            {active === 'leasing' && (
+              <LeasingJournal />
             )}
           </div>
         </main>
